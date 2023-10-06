@@ -17,6 +17,7 @@ import Config
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
 host = System.fetch_env!("PHX_HOST")
+path = System.fetch_env!("PHX_PATH")
 port = String.to_integer(System.fetch_env!("PORT"))
 global_organization = System.get_env("GLOBAL_ORGANIZATION")
 # TODO: REQUIRE_GITHUB_ORGANIZATION: allow users only from this github orga
@@ -57,7 +58,7 @@ if config_env() == :prod || config_env() == :staging do
   if System.get_env("PHX_SERVER") == "true", do: config(:azimutt, AzimuttWeb.Endpoint, server: true)
 
   config :azimutt, AzimuttWeb.Endpoint,
-    url: [host: host, port: 443, scheme: "https"],
+    url: [host: host, path: path, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.

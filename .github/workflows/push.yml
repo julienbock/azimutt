@@ -74,6 +74,7 @@ jobs:
       - name: Run tests
         env:
           PHX_HOST: localhost
+          PHX_PATH: /
           PORT: 4000
           FILE_STORAGE_ADAPTER: local
         run: |
